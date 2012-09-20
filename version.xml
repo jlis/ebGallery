@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<wolf-plugins>
+    <wolf-plugin>
+        <id>eb_gallery</id>
+        <version>1.0</version>
+        <status>stable</status>
+    </wolf-plugin>
+</wolf-plugins>

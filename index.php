@@ -24,8 +24,8 @@ Plugin::setInfos(array(
     'version'     => '1.0',
     'license'     => 'GPL',
     'author'      => 'Julius Ehrlich',
-    'website'     => 'http://www.ehrlich-bros.de/eb_gallery',
-    'update_url'  => 'http://www.ehrlich-bros.de/eb_gallery/version.xml',
+    'website'     => 'https://github.com/jlis/ebGallery',
+    'update_url'  => 'https://raw.github.com/jlis/ebGallery/master/version.xml',
     'require_wolf_version' => '0.7.0')
 );
  
