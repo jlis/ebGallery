@@ -1,22 +1,9 @@
 <?php
 
 /*
- * ebGallery for Wolf CMS- Simply create multiple galleries from folders
+ * Filter logic for the ebGallery plugin
  *
  * This file is part of the ebGallery plugin for Wolf CMS
- */
-
-/**
- * The ebGallery plugin provides a filter that uses integrates the gallery.
- *
- * @package wolf
- * @subpackage plugin.eb_gallery
- *
- * @author Julius Ehrlich <julius@ehrlich-bros.de>
- * @version 1.0
- * @for Wolf version 0.7.0 and above
- * @license http://www.gnu.org/licenses/gpl.html GPL License
- * @copyright ehrlich-bros, 2012
  */
 
 //security measure
@@ -27,6 +14,7 @@ if (!defined('IN_CMS')) { exit(); }
  */
 class EbGallery {
 
+    // image resizing settings
     private $folder;
     private $thumb_width;
     private $thumb_height;
@@ -35,6 +23,7 @@ class EbGallery {
     private $default_thumb_width = 150;
     private $default_thumb_height = 94;
 
+    // template settings
     private $gallery_tmpl;
     private $title_tmpl;
     private $image_tmpl;
@@ -43,12 +32,14 @@ class EbGallery {
     private $default_title_tmpl = '<h2>((title))</h2>';
     private $default_image_tmpl = '<a class="photo" rel="((title))" href="((image))"><img src="((thumb))"/></a>';
 
+    // main wolf cms filter function which applies the current filter to the content
     public function apply($text) {
         $this->_setup_tmpl();
         $parsed_text = $this->_parse($text);
         return $parsed_text;
     }
 
+    // prepare the template and get the html
     private function _setup_tmpl() {
         $tmpl_file = PLUGINS_ROOT . '/eb_gallery/gallery.tmpl';
         $tmpl_content = file_get_contents($tmpl_file);
@@ -64,6 +55,7 @@ class EbGallery {
         }
     }
 
+    // parse and replace the placeholders
     private function _parse_tmpl($tmpl, $data) {
         if (is_array($data)) {
             foreach ($data as $search => $replace) {
@@ -75,6 +67,7 @@ class EbGallery {
         return $tmpl;
     }
 
+    // parses the shortcodes
     private function _parse($text) {
         preg_match_all('/\(\((.*)\)\)/i', $text, $matches);
         if (is_array($matches) && isset($matches[1]) && count($mathes[1] > 0)) {
@@ -119,6 +112,7 @@ class EbGallery {
         return $text;
     }
 
+    // returns the finished html
     private function _render_gallery($image_dir) {
         // create thumbnails
         if ($this->_create_thumbs($image_dir)) {
@@ -129,6 +123,8 @@ class EbGallery {
         }
     }
 
+    // creates the thumbnails
+    // thumbs are rewritten everytime the page is saved
     private function _create_thumbs($image_dir) {
         $handle = opendir($image_dir);
         $count_images = 0;
@@ -209,6 +205,7 @@ class EbGallery {
         }
     }
 
+    // generates the html for a single gallery (container + title + images)
     private function _create_html($image_dir) {
         $fullpath = str_replace('?', '', BASE_URL) . 'public/images/' . $this->folder;
         

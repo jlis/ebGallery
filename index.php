@@ -17,6 +17,7 @@
 //security measure
 if (!defined('IN_CMS')) { exit(); }
 
+// set plugin information
 Plugin::setInfos(array(
     'id'          => 'eb_gallery',
     'title'       => 'ebGallery', 
@@ -28,5 +29,9 @@ Plugin::setInfos(array(
     'update_url'  => 'https://raw.github.com/jlis/ebGallery/master/version.xml',
     'require_wolf_version' => '0.7.0')
 );
- 
+
+// add filter "Eb gallery"
 Filter::add('eb_gallery', 'eb_gallery/filter.php');
+
+// add controller for backend pages
+Plugin::addController('eb_gallery', 'ebGallery', 'administrator,developer');
