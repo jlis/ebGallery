@@ -234,7 +234,7 @@ class EbGallery {
                 foreach($files as $file) {
                     $counter++;
                     $str = str_replace('_', ' ',$file);
-                    $fullpath = str_replace('admin/', '', $fullpath);
+                    $fullpath = str_replace(ADMIN_DIR . '/', '', $fullpath);
                     $thumb_url = $fullpath . $file;
                     $image_url = str_replace('-thumb', '', $thumb_url);
 
