@@ -13,7 +13,7 @@ The galleries are built from folders, previews will be generated when the page i
 
 <h2>Usage</h2>
 
-<hr><p><strong>Step 1:</strong> Download an unpack the ebGallery plugin into your <code>wolf/plugins</code> folder in your Wolf CMS installation.</p>
+<hr><p><strong>Step 1:</strong> Download an unpack the ebGallery plugin into your <code>wolf/plugins</code> directory into a folder called <code>eb_gallery</code> in your Wolf CMS installation.</p>
 
 <p><strong>Step 2:</strong> Go to you Wolf CMS backend an active the ebGallery plugin.</p>
 
