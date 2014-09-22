@@ -182,7 +182,6 @@ class EbGallery {
                         $width = imagesx($starting_image);
                         $height = imagesy($starting_image);
 
-                        $img = str_replace ('.' . $image_type, '', $img);
                         $thumb_image = imagecreatetruecolor($this->thumb_width, $this->thumb_height);
                         imagecopyresampled($thumb_image, $starting_image, 0, 0, 0, 0, $this->thumb_width, $this->thumb_height, $width, $height);
 
@@ -236,7 +235,7 @@ class EbGallery {
                     $str = str_replace('_', ' ',$file);
                     $fullpath = str_replace(ADMIN_DIR . '/', '', $fullpath);
                     $thumb_url = $fullpath . $file;
-                    $image_url = str_replace('-thumb', '', $thumb_url);
+                    $image_url = preg_replace('/-thumb.*/', '', $thumb_url);
 
                     $sub_html.= $this->_parse_tmpl($this->image_tmpl, array(
                         'title' => $gallery_title,
