@@ -10,7 +10,7 @@ It is still being developed and new features will continue to be added.
 ##Usage##
 * * *
 
-**Step 1:** Download an unpack the ebGallery plugin into your `wolf/plugins` folder in your Wolf CMS installation.
+**Step 1:** Download an unpack the ebGallery plugin inside your `wolf/plugins` directory into a folder called `eb_gallery` in your Wolf CMS installation.
 
 **Step 2:** Go to you Wolf CMS backend an active the ebGallery plugin.
 
